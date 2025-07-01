@@ -21,7 +21,8 @@ public class PadelRentalForm extends JFrame {
     private JButton btnDel;
     private JComboBox<String> cbLapangan;
     private JTable rentTable;
-    private List<Rent> rents;
+    private List<Rent> rents = new ArrayList<>();
+
 
     public PadelRentalForm() {
         setTitle("Form Sewa Lapangan Padel");
