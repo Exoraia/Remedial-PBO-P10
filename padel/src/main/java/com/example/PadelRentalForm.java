@@ -107,7 +107,7 @@ public class PadelRentalForm extends JFrame {
         leftPanel.add(formPanel, BorderLayout.NORTH);
         add(leftPanel, BorderLayout.WEST);
 
-        tableModel = new DefaultTableModel(new String[]{"ID", "Nama", "Nomor HP", "Tanggal", "Jam Mulai", "Jam Selesai", "Lapangan"}, 0);
+        tableModel = new DefaultTableModel(new String[]{"Nama", "Nomor HP", "Tanggal", "Jam Mulai", "Jam Selesai", "Lapangan"}, 0);
         rentTable = new JTable(tableModel);
         loadRentData(rents);
  
@@ -127,7 +127,6 @@ public class PadelRentalForm extends JFrame {
                 JOptionPane.showMessageDialog(this, "Semua field harus diisi!", "Peringatan", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-
             int selectedRow = rentTable.getSelectedRow();
             if (selectedRow != -1) {
                 Rent rent = rents.get(selectedRow);
@@ -143,7 +142,7 @@ public class PadelRentalForm extends JFrame {
                 tableModel.setValueAt(tanggal, selectedRow, 3);
                 tableModel.setValueAt(jammulai, selectedRow, 4);
                 tableModel.setValueAt(jamselesai, selectedRow, 5);
-                tableModel.setValueAt(lapangan, selectedRow, 5);
+                tableModel.setValueAt(lapangan, selectedRow, 6);
 
                 JOptionPane.showMessageDialog(this, "Data berhasil diperbarui.");
             } else {
