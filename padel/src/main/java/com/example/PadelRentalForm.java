@@ -16,13 +16,12 @@ import java.io.OutputStream;
 public class PadelRentalForm extends JFrame {
     private JTextField tfNama, tfNoHP, tfTanggal, tfJamMulai, tfJamSelesai;
     private DefaultTableModel tableModel;   
-    private JButton btnSubmit, btnEdit, btnDel;
+    private JButton btnSubmit;
+    private JButton btnEdit;
+    private JButton btnDel;
     private JComboBox<String> cbLapangan;
     private JTable rentTable;
     private List<Rent> rents;
-
-    List<Rent> rentList = new ArrayList<>()
-    rentList.add(new Rent(1, "Tes", "Tes", "Tes", "Tes", "Tes", "Tes"));
 
     public PadelRentalForm() {
         setTitle("Form Sewa Lapangan Padel");
@@ -30,7 +29,7 @@ public class PadelRentalForm extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        JLabel titleLabel = new JLabel("Kelola Customer");
+        JLabel titleLabel = new JLabel("Reservasi Padel");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 30));
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         add(titleLabel, BorderLayout.NORTH);
@@ -96,13 +95,13 @@ public class PadelRentalForm extends JFrame {
 
         // Edit
         gbc.gridx = 0; gbc.gridy = 7; gbc.gridwidth = 2;
-        btnSubmit = new JButton("Simpan");
-        formPanel.add(btnSubmit, gbc);
+        btnEdit = new JButton("Edit");
+        formPanel.add(btnEdit, gbc);
 
         // Delete
         gbc.gridx = 0; gbc.gridy = 8; gbc.gridwidth = 2;
-        btnSubmit = new JButton("Simpan");
-        formPanel.add(btnSubmit, gbc);
+        btnDel = new JButton("Hapus");
+        formPanel.add(btnDel, gbc);
 
         JPanel leftPanel = new JPanel(new BorderLayout());
         leftPanel.add(formPanel, BorderLayout.NORTH);
@@ -112,6 +111,9 @@ public class PadelRentalForm extends JFrame {
         rentTable = new JTable(tableModel);
         loadRentData(rents);
  
+        JScrollPane scrollPane = new JScrollPane(rentTable);
+        add(scrollPane, BorderLayout.CENTER);
+
         // Actions
         btnSubmit.addActionListener(e -> {
             String nama = tfNama.getText();
